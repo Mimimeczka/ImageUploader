@@ -22,7 +22,7 @@ class User(models.Model):
 
 
 class Image(models.Model):
-    user_id = models.IntegerField(null=False)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='images_links', null=False)
     photo = models.ImageField(null=False, blank=True)
 
 
