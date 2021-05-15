@@ -9,9 +9,11 @@ class AccountTypeSerializer(serializers.ModelSerializer):
 
 
 class ImageTypeSerializer(serializers.ModelSerializer):
+    create_link = serializers.ListField(child=serializers.CharField())
+
     class Meta:
         model = Image
-        fields = ['user_id']
+        fields = ['create_link']
 
 
 class UserSerializer(serializers.ModelSerializer):
