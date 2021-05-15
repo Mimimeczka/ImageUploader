@@ -9,8 +9,28 @@ from rest_framework.response import Response
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
     serializer_class = UserSerializer
+
+    def get_queryset(self):
+        user = User.objects.all()
+        return user
+
+    def list(self, request, *args, **kwargs):
+        return Response('This method is not allowed')
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = UserSerializer(instance)
+        return Response(serializer.data)
+
+    def create(self, request, *args, **kwargs):
+        return Response('This method is not allowed')
+
+    def update(self, request, *args, **kwargs):
+        return Response('This method is not allowed')
+
+    def destroy(self, request, *args, **kwargs):
+        return Response('This method is not allowed')
 
 
 @api_view(['POST'])
