@@ -12,7 +12,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 @api_view(['POST'])
-def image(request, user_id, ):
+def create_image(request, user_id):
     user = get_object_or_404(User, id=user_id)
     print(user)
     request_image = request.data['image']
@@ -21,3 +21,11 @@ def image(request, user_id, ):
             photo=request_image
         )
     return HttpResponse('Image added')
+
+
+@api_view(['GET'])
+def get_image(request, user_id, image_id, type):
+    user = get_object_or_404(User, id=user_id)
+    image = get_object_or_404(Image, id=image_id)
+    if type == "small":
+        return HttpResponse(image.photo, content_type='image/jpg', )
