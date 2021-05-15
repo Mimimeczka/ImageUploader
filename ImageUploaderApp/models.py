@@ -25,6 +25,9 @@ class Image(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='images_links', null=False)
     photo = models.ImageField(null=False, blank=True)
 
+    def __str__(self):
+        return f'{self.photo} user: {self.user_id}'
+
 
 class Settings(models.Model):
     account_type = models.OneToOneField(AccountType, on_delete=models.CASCADE, null=False)
