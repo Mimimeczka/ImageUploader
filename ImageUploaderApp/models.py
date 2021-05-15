@@ -33,7 +33,7 @@ class Image(models.Model):
         image_link = f'http://127.0.0.1:8000/imageuploader/users/{self.user_id.pk}/images/{self.pk}/{type}'
         return image_link
 
-    def create_link(self):
+    def image_link(self):
         account_type = self.user_id.account_type.types
         print(account_type)
         small = 'small'
