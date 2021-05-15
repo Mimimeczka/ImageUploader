@@ -4,6 +4,7 @@ from .models import User, Image
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
+from .validators import check_account_type
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -27,5 +28,5 @@ def create_image(request, user_id):
 def get_image(request, user_id, image_id, type):
     user = get_object_or_404(User, id=user_id)
     image = get_object_or_404(Image, id=image_id)
-    if type == "small":
-        return HttpResponse(image.photo, content_type='image/jpg', )
+    check_account_type(type, user.account_type.types)
+    return HttpResponse(image.photo, content_type='image/jpg')
