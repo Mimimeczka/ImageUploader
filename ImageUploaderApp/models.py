@@ -29,7 +29,7 @@ class Image(models.Model):
         return f'{self.photo} user: {self.user_id}'
 
     def link(self, type):
-        image_link = f'http://127.0.0.1:8000/imageuploader/user/{self.user_id.pk}/images/{self.pk}/{type}'
+        image_link = f'http://127.0.0.1:8000/imageuploader/users/{self.user_id.pk}/images/{self.pk}/{type}'
         return image_link
 
     def create_link(self):
