@@ -14,3 +14,9 @@ def check_account_type(type_from_url, user_account_type):
 
     if user_account_type < int_type_from_url:
         raise ValidationError('Wrong account type')
+
+
+def check_image_type(image_name):
+    image_name = image_name.lower()
+    if not image_name.endswith('.jpg') or image_name.endswith('.png'):
+        raise ValidationError('Wrong file extension')

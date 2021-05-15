@@ -4,7 +4,7 @@ from .models import User, Image
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
-from .validators import check_account_type
+from .validators import check_account_type, check_image_type
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -17,6 +17,7 @@ def create_image(request, user_id):
     user = get_object_or_404(User, id=user_id)
     print(user)
     request_image = request.data['image']
+    check_image_type(request_image.name)
     image = Image.objects.create(
             user_id=user,
             photo=request_image
