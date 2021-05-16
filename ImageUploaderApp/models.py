@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import EmailValidator
+import socket
 
 
 class AccountType(models.Model):
@@ -30,7 +31,7 @@ class Image(models.Model):
         return f'{self.photo} user: {self.user_id}'
 
     def link(self, type):
-        image_link = f'http://127.0.0.1:8000/imageuploader/users/{self.user_id.pk}/images/{self.pk}/{type}'
+        image_link = f'http://{socket.gethostbyname("localhost")}:8000/imageuploader/users/{self.user_id.pk}/images/{self.pk}/{type}'
         return image_link
 
     def image_link(self):
