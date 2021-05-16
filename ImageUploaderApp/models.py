@@ -15,7 +15,7 @@ class AccountType(models.Model):
 
 
 class User(models.Model):
-    mail = models.CharField(unique=True, null=False, max_length=50)
+    mail = models.CharField(unique=True, null=False, max_length=50, validators=[EmailValidator])
     account_type = models.OneToOneField(AccountType, on_delete=models.CASCADE, null=False)
 
     def __str__(self):
