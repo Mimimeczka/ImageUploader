@@ -35,7 +35,6 @@ class Image(models.Model):
 
     def image_link(self):
         account_type = self.user_id.account_type.types
-        print(account_type)
         small = 'small'
         medium = 'medium'
         original = 'original'
@@ -50,6 +49,9 @@ class Image(models.Model):
 class Settings(models.Model):
     account_type = models.OneToOneField(AccountType, on_delete=models.CASCADE, null=False)
     resolution = models.IntegerField(null=False)
+
+    def __str__(self):
+        return f'{self.account_type} - {self.resolution}'
 
 
 
