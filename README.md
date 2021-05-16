@@ -2,6 +2,8 @@
 ##installation 
 1. pip install -r requirements.txt
 2. python3 manage.py runserver
+3. admin login: justyna 
+4. admin password: 1234
 
 ##rest api
 1. GET imageuploader/users/<int:user_id>/ - to get all links to all images of user
